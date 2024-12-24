@@ -7,9 +7,9 @@ module svtm
 fn vstring_to_cstring(v_str string) &u8 {
     return v_str.str
 }
-fn C.stm_setup() voidptr
-pub fn setup() voidptr {
-    return C.stm_setup()
+fn C.stm_setup() 
+pub fn setup() {
+    C.stm_setup()
 }
 fn C.stm_now() u64
 pub fn now() u64 {

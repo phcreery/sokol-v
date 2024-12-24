@@ -7,5 +7,5 @@ module svlog
 fn vstring_to_cstring(v_str string) &u8 {
     return v_str.str
 }
-fn C.slog_func(&u8, u32, u32, &u8, u32, &u8, voidptr) voidptr
+fn C.slog_func(&u8, u32, u32, &u8, u32, &u8, voidptr) 
 pub const func = slog_func

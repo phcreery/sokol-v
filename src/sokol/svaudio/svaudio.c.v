@@ -45,37 +45,43 @@ pub enum LogItem as u32 {
     coreaudio_start_failed
     backend_buffer_size_isnt_multiple_of_packet_size
 }
-pub struct Logger {
+pub struct C.saudio_logger {
 pub mut:
-    func  fn (&u8, u32, u32, &u8, u32, &u8, voidptr) voidptr = unsafe { nil }
+    func  fn (&u8, u32, u32, &u8, u32, &u8, voidptr)  = unsafe { nil }
     user_data  voidptr
 }
-pub struct Allocator {
+pub type Logger = C.saudio_logger
+
+pub struct C.saudio_allocator {
 pub mut:
     alloc_fn  fn (usize, voidptr) voidptr = unsafe { nil }
-    free_fn  fn (voidptr, voidptr) voidptr = unsafe { nil }
+    free_fn  fn (voidptr, voidptr)  = unsafe { nil }
     user_data  voidptr
 }
-pub struct Desc {
+pub type Allocator = C.saudio_allocator
+
+pub struct C.saudio_desc {
 pub mut:
     sample_rate int = 0
     num_channels int = 0
     buffer_frames int = 0
     packet_frames int = 0
     num_packets int = 0
-    stream_cb  fn (&f32, int, int) voidptr = unsafe { nil }
-    stream_userdata_cb  fn (&f32, int, int, voidptr) voidptr = unsafe { nil }
+    stream_cb  fn (&f32, int, int)  = unsafe { nil }
+    stream_userdata_cb  fn (&f32, int, int, voidptr)  = unsafe { nil }
     user_data  voidptr
     allocator Allocator
     logger Logger
 }
-fn C.saudio_setup(&Desc) voidptr
-pub fn setup(desc &Desc) voidptr {
-    return C.saudio_setup(desc)
+pub type Desc = C.saudio_desc
+
+fn C.saudio_setup(&Desc) 
+pub fn setup(desc &Desc) {
+    C.saudio_setup(desc)
 }
-fn C.saudio_shutdown() voidptr
-pub fn shutdown() voidptr {
-    return C.saudio_shutdown()
+fn C.saudio_shutdown() 
+pub fn shutdown() {
+    C.saudio_shutdown()
 }
 fn C.saudio_isvalid() bool
 pub fn isvalid() bool {

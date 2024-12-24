@@ -87,4 +87,7 @@ $if !no_sokol_app ? {
 #define SOKOL_GL_IMPL
 #include "sokol_gl.h"
 
+#define SOKOL_GLUE_IMPL
+#include "sokol_glue.h"
+
 // #include "sokol_v.post.h"

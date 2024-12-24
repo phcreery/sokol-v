@@ -8,16 +8,20 @@ import svg as sg
 fn vstring_to_cstring(v_str string) &u8 {
     return v_str.str
 }
-pub struct Range {
+pub struct C.sshape_range {
 pub mut:
     ptr  voidptr
     size usize = 0
 }
-pub struct Mat4 {
+pub type Range = C.sshape_range
+
+pub struct C.sshape_mat4_t {
 pub mut:
     m [4][4]f32 = [4][4]f32{init: [4]f32{init: 0.0}}
 }
-pub struct Vertex {
+pub type Mat4 = C.sshape_mat4_t
+
+pub struct C.sshape_vertex_t {
 pub mut:
     x f32 = 0.0
     y f32 = 0.0
@@ -27,34 +31,46 @@ pub mut:
     v u16 = 0
     color u32 = 0
 }
-pub struct ElementRange {
+pub type Vertex = C.sshape_vertex_t
+
+pub struct C.sshape_element_range_t {
 pub mut:
     base_element u32 = 0
     num_elements u32 = 0
 }
-pub struct SizesItem {
+pub type ElementRange = C.sshape_element_range_t
+
+pub struct C.sshape_sizes_item_t {
 pub mut:
     num u32 = 0
     size u32 = 0
 }
-pub struct Sizes {
+pub type SizesItem = C.sshape_sizes_item_t
+
+pub struct C.sshape_sizes_t {
 pub mut:
     vertices SizesItem
     indices SizesItem
 }
-pub struct BufferItem {
+pub type Sizes = C.sshape_sizes_t
+
+pub struct C.sshape_buffer_item_t {
 pub mut:
     buffer Range
     data_size usize = 0
     shape_offset usize = 0
 }
-pub struct Buffer {
+pub type BufferItem = C.sshape_buffer_item_t
+
+pub struct C.sshape_buffer_t {
 pub mut:
     valid bool = false
     vertices BufferItem
     indices BufferItem
 }
-pub struct Plane {
+pub type Buffer = C.sshape_buffer_t
+
+pub struct C.sshape_plane_t {
 pub mut:
     width f32 = 0.0
     depth f32 = 0.0
@@ -64,7 +80,9 @@ pub mut:
     merge bool = false
     transform Mat4
 }
-pub struct Box {
+pub type Plane = C.sshape_plane_t
+
+pub struct C.sshape_box_t {
 pub mut:
     width f32 = 0.0
     height f32 = 0.0
@@ -75,7 +93,9 @@ pub mut:
     merge bool = false
     transform Mat4
 }
-pub struct Sphere {
+pub type Box = C.sshape_box_t
+
+pub struct C.sshape_sphere_t {
 pub mut:
     radius f32 = 0.0
     slices u16 = 0
@@ -85,7 +105,9 @@ pub mut:
     merge bool = false
     transform Mat4
 }
-pub struct Cylinder {
+pub type Sphere = C.sshape_sphere_t
+
+pub struct C.sshape_cylinder_t {
 pub mut:
     radius f32 = 0.0
     height f32 = 0.0
@@ -96,7 +118,9 @@ pub mut:
     merge bool = false
     transform Mat4
 }
-pub struct Torus {
+pub type Cylinder = C.sshape_cylinder_t
+
+pub struct C.sshape_torus_t {
 pub mut:
     radius f32 = 0.0
     ring_radius f32 = 0.0
@@ -107,6 +131,8 @@ pub mut:
     merge bool = false
     transform Mat4
 }
+pub type Torus = C.sshape_torus_t
+
 fn C.sshape_build_plane(&Buffer, &Plane) Buffer
 pub fn build_plane(buf &Buffer, params &Plane) Buffer {
     return C.sshape_build_plane(buf, params)
