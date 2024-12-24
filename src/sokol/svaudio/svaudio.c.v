@@ -62,11 +62,11 @@ pub type Allocator = C.saudio_allocator
 
 pub struct C.saudio_desc {
 pub mut:
-    sample_rate int = 0
-    num_channels int = 0
-    buffer_frames int = 0
-    packet_frames int = 0
-    num_packets int = 0
+    sample_rate int
+    num_channels int
+    buffer_frames int
+    packet_frames int
+    num_packets int
     stream_cb  fn (&f32, int, int)  = unsafe { nil }
     stream_userdata_cb  fn (&f32, int, int, voidptr)  = unsafe { nil }
     user_data  voidptr

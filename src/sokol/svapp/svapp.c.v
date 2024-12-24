@@ -169,11 +169,11 @@ pub enum AndroidTooltype as u32 {
 }
 pub struct C.sapp_touchpoint {
 pub mut:
-    identifier usize = 0
+    identifier usize
     pos_x f32 = 0.0
     pos_y f32 = 0.0
     android_tooltype AndroidTooltype = .unknown
-    changed bool = false
+    changed bool
 }
 pub type Touchpoint = C.sapp_touchpoint
 
@@ -192,12 +192,12 @@ pub const modifier_rmb = 512
 pub const modifier_mmb = 1024
 pub struct C.sapp_event {
 pub mut:
-    frame_count u64 = 0
+    frame_count u64
     type EventType = .invalid
     key_code Keycode = .invalid
-    char_code u32 = 0
-    key_repeat bool = false
-    modifiers u32 = 0
+    char_code u32
+    key_repeat bool
+    modifiers u32
     mouse_button Mousebutton = .left
     mouse_x f32 = 0.0
     mouse_y f32 = 0.0
@@ -205,33 +205,33 @@ pub mut:
     mouse_dy f32 = 0.0
     scroll_x f32 = 0.0
     scroll_y f32 = 0.0
-    num_touches int = 0
+    num_touches int
     touches [8]Touchpoint = [8]Touchpoint{}
-    window_width int = 0
-    window_height int = 0
-    framebuffer_width int = 0
-    framebuffer_height int = 0
+    window_width int
+    window_height int
+    framebuffer_width int
+    framebuffer_height int
 }
 pub type Event = C.sapp_event
 
 pub struct C.sapp_range {
 pub mut:
     ptr  voidptr
-    size usize = 0
+    size usize
 }
 pub type Range = C.sapp_range
 
 pub struct C.sapp_image_desc {
 pub mut:
-    width int = 0
-    height int = 0
+    width int
+    height int
     pixels Range
 }
 pub type ImageDesc = C.sapp_image_desc
 
 pub struct C.sapp_icon_desc {
 pub mut:
-    sokol_default bool = false
+    sokol_default bool
     images [8]ImageDesc = [8]ImageDesc{}
 }
 pub type IconDesc = C.sapp_icon_desc
@@ -363,40 +363,40 @@ pub mut:
     frame_userdata_cb  fn (voidptr)  = unsafe { nil }
     cleanup_userdata_cb  fn (voidptr)  = unsafe { nil }
     event_userdata_cb  fn (&Event, voidptr)  = unsafe { nil }
-    width int = 0
-    height int = 0
-    sample_count int = 0
-    swap_interval int = 0
-    high_dpi bool = false
-    fullscreen bool = false
-    alpha bool = false
+    width int
+    height int
+    sample_count int
+    swap_interval int
+    high_dpi bool
+    fullscreen bool
+    alpha bool
     window_title &u8 = unsafe { nil }
-    enable_clipboard bool = false
-    clipboard_size int = 0
-    enable_dragndrop bool = false
-    max_dropped_files int = 0
-    max_dropped_file_path_length int = 0
+    enable_clipboard bool
+    clipboard_size int
+    enable_dragndrop bool
+    max_dropped_files int
+    max_dropped_file_path_length int
     icon IconDesc
     allocator Allocator
     logger Logger
-    gl_major_version int = 0
-    gl_minor_version int = 0
-    win32_console_utf8 bool = false
-    win32_console_create bool = false
-    win32_console_attach bool = false
+    gl_major_version int
+    gl_minor_version int
+    win32_console_utf8 bool
+    win32_console_create bool
+    win32_console_attach bool
     html5_canvas_selector &u8 = unsafe { nil }
-    html5_canvas_resize bool = false
-    html5_preserve_drawing_buffer bool = false
-    html5_premultiplied_alpha bool = false
-    html5_ask_leave_site bool = false
-    html5_bubble_mouse_events bool = false
-    html5_bubble_touch_events bool = false
-    html5_bubble_wheel_events bool = false
-    html5_bubble_key_events bool = false
-    html5_bubble_char_events bool = false
-    html5_use_emsc_set_main_loop bool = false
-    html5_emsc_set_main_loop_simulate_infinite_loop bool = false
-    ios_keyboard_resizes_canvas bool = false
+    html5_canvas_resize bool
+    html5_preserve_drawing_buffer bool
+    html5_premultiplied_alpha bool
+    html5_ask_leave_site bool
+    html5_bubble_mouse_events bool
+    html5_bubble_touch_events bool
+    html5_bubble_wheel_events bool
+    html5_bubble_key_events bool
+    html5_bubble_char_events bool
+    html5_use_emsc_set_main_loop bool
+    html5_emsc_set_main_loop_simulate_infinite_loop bool
+    ios_keyboard_resizes_canvas bool
 }
 pub type Desc = C.sapp_desc
 
@@ -407,9 +407,9 @@ pub enum Html5FetchError as u32 {
 }
 pub struct C.sapp_html5_fetch_response {
 pub mut:
-    succeeded bool = false
+    succeeded bool
     error_code Html5FetchError = .fetch_error_no_error
-    file_index int = 0
+    file_index int
     data Range
     buffer Range
     user_data  voidptr
@@ -418,7 +418,7 @@ pub type Html5FetchResponse = C.sapp_html5_fetch_response
 
 pub struct C.sapp_html5_fetch_request {
 pub mut:
-    dropped_file_index int = 0
+    dropped_file_index int
     callback  fn (&Html5FetchResponse)  = unsafe { nil }
     buffer Range
     user_data  voidptr

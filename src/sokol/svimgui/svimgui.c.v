@@ -30,16 +30,16 @@ pub type Logger = C.simgui_logger_t
 
 pub struct C.simgui_desc_t {
 pub mut:
-    max_vertices int = 0
+    max_vertices int
     color_format sg.PixelFormat = .default
     depth_format sg.PixelFormat = .default
-    sample_count int = 0
+    sample_count int
     ini_filename &u8 = unsafe { nil }
-    no_default_font bool = false
-    disable_paste_override bool = false
-    disable_set_mouse_cursor bool = false
-    disable_windows_resize_from_edges bool = false
-    write_alpha_channel bool = false
+    no_default_font bool
+    disable_paste_override bool
+    disable_set_mouse_cursor bool
+    disable_windows_resize_from_edges bool
+    write_alpha_channel bool
     allocator Allocator
     logger Logger
 }
@@ -47,8 +47,8 @@ pub type Desc = C.simgui_desc_t
 
 pub struct C.simgui_frame_desc_t {
 pub mut:
-    width int = 0
-    height int = 0
+    width int
+    height int
     delta_time f64 = 0.0
     dpi_scale f32 = 0.0
 }

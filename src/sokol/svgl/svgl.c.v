@@ -26,35 +26,35 @@ pub type Logger = C.sgl_logger_t
 
 pub struct C.sgl_pipeline {
 pub mut:
-    id u32 = 0
+    id u32
 }
 pub type Pipeline = C.sgl_pipeline
 
 pub struct C.sgl_context {
 pub mut:
-    id u32 = 0
+    id u32
 }
 pub type Context = C.sgl_context
 
 pub struct C.sgl_error_t {
 pub mut:
-    any bool = false
-    vertices_full bool = false
-    uniforms_full bool = false
-    commands_full bool = false
-    stack_overflow bool = false
-    stack_underflow bool = false
-    no_context bool = false
+    any bool
+    vertices_full bool
+    uniforms_full bool
+    commands_full bool
+    stack_overflow bool
+    stack_underflow bool
+    no_context bool
 }
 pub type Error = C.sgl_error_t
 
 pub struct C.sgl_context_desc_t {
 pub mut:
-    max_vertices int = 0
-    max_commands int = 0
+    max_vertices int
+    max_commands int
     color_format sg.PixelFormat = .default
     depth_format sg.PixelFormat = .default
-    sample_count int = 0
+    sample_count int
 }
 pub type ContextDesc = C.sgl_context_desc_t
 
@@ -68,13 +68,13 @@ pub type Allocator = C.sgl_allocator_t
 
 pub struct C.sgl_desc_t {
 pub mut:
-    max_vertices int = 0
-    max_commands int = 0
-    context_pool_size int = 0
-    pipeline_pool_size int = 0
+    max_vertices int
+    max_commands int
+    context_pool_size int
+    pipeline_pool_size int
     color_format sg.PixelFormat = .default
     depth_format sg.PixelFormat = .default
-    sample_count int = 0
+    sample_count int
     face_winding sg.FaceWinding = .default
     allocator Allocator
     logger Logger

@@ -25,35 +25,35 @@ pub type Logger = C.sdtx_logger_t
 
 pub struct C.sdtx_context {
 pub mut:
-    id u32 = 0
+    id u32
 }
 pub type Context = C.sdtx_context
 
 pub struct C.sdtx_range {
 pub mut:
     ptr  voidptr
-    size usize = 0
+    size usize
 }
 pub type Range = C.sdtx_range
 
 pub struct C.sdtx_font_desc_t {
 pub mut:
     data Range
-    first_char u8 = 0
-    last_char u8 = 0
+    first_char u8
+    last_char u8
 }
 pub type FontDesc = C.sdtx_font_desc_t
 
 pub struct C.sdtx_context_desc_t {
 pub mut:
-    max_commands int = 0
-    char_buf_size int = 0
+    max_commands int
+    char_buf_size int
     canvas_width f32 = 0.0
     canvas_height f32 = 0.0
-    tab_width int = 0
+    tab_width int
     color_format sg.PixelFormat = .default
     depth_format sg.PixelFormat = .default
-    sample_count int = 0
+    sample_count int
 }
 pub type ContextDesc = C.sdtx_context_desc_t
 
@@ -67,8 +67,8 @@ pub type Allocator = C.sdtx_allocator_t
 
 pub struct C.sdtx_desc_t {
 pub mut:
-    context_pool_size int = 0
-    printf_buf_size int = 0
+    context_pool_size int
+    printf_buf_size int
     fonts [8]FontDesc = [8]FontDesc{}
     context ContextDesc
     allocator Allocator

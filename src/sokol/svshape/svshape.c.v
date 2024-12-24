@@ -11,7 +11,7 @@ fn vstring_to_cstring(v_str string) &u8 {
 pub struct C.sshape_range {
 pub mut:
     ptr  voidptr
-    size usize = 0
+    size usize
 }
 pub type Range = C.sshape_range
 
@@ -26,24 +26,24 @@ pub mut:
     x f32 = 0.0
     y f32 = 0.0
     z f32 = 0.0
-    normal u32 = 0
-    u u16 = 0
-    v u16 = 0
-    color u32 = 0
+    normal u32
+    u u16
+    v u16
+    color u32
 }
 pub type Vertex = C.sshape_vertex_t
 
 pub struct C.sshape_element_range_t {
 pub mut:
-    base_element u32 = 0
-    num_elements u32 = 0
+    base_element u32
+    num_elements u32
 }
 pub type ElementRange = C.sshape_element_range_t
 
 pub struct C.sshape_sizes_item_t {
 pub mut:
-    num u32 = 0
-    size u32 = 0
+    num u32
+    size u32
 }
 pub type SizesItem = C.sshape_sizes_item_t
 
@@ -57,14 +57,14 @@ pub type Sizes = C.sshape_sizes_t
 pub struct C.sshape_buffer_item_t {
 pub mut:
     buffer Range
-    data_size usize = 0
-    shape_offset usize = 0
+    data_size usize
+    shape_offset usize
 }
 pub type BufferItem = C.sshape_buffer_item_t
 
 pub struct C.sshape_buffer_t {
 pub mut:
-    valid bool = false
+    valid bool
     vertices BufferItem
     indices BufferItem
 }
@@ -74,10 +74,10 @@ pub struct C.sshape_plane_t {
 pub mut:
     width f32 = 0.0
     depth f32 = 0.0
-    tiles u16 = 0
-    color u32 = 0
-    random_colors bool = false
-    merge bool = false
+    tiles u16
+    color u32
+    random_colors bool
+    merge bool
     transform Mat4
 }
 pub type Plane = C.sshape_plane_t
@@ -87,10 +87,10 @@ pub mut:
     width f32 = 0.0
     height f32 = 0.0
     depth f32 = 0.0
-    tiles u16 = 0
-    color u32 = 0
-    random_colors bool = false
-    merge bool = false
+    tiles u16
+    color u32
+    random_colors bool
+    merge bool
     transform Mat4
 }
 pub type Box = C.sshape_box_t
@@ -98,11 +98,11 @@ pub type Box = C.sshape_box_t
 pub struct C.sshape_sphere_t {
 pub mut:
     radius f32 = 0.0
-    slices u16 = 0
-    stacks u16 = 0
-    color u32 = 0
-    random_colors bool = false
-    merge bool = false
+    slices u16
+    stacks u16
+    color u32
+    random_colors bool
+    merge bool
     transform Mat4
 }
 pub type Sphere = C.sshape_sphere_t
@@ -111,11 +111,11 @@ pub struct C.sshape_cylinder_t {
 pub mut:
     radius f32 = 0.0
     height f32 = 0.0
-    slices u16 = 0
-    stacks u16 = 0
-    color u32 = 0
-    random_colors bool = false
-    merge bool = false
+    slices u16
+    stacks u16
+    color u32
+    random_colors bool
+    merge bool
     transform Mat4
 }
 pub type Cylinder = C.sshape_cylinder_t
@@ -124,11 +124,11 @@ pub struct C.sshape_torus_t {
 pub mut:
     radius f32 = 0.0
     ring_radius f32 = 0.0
-    sides u16 = 0
-    rings u16 = 0
-    color u32 = 0
-    random_colors bool = false
-    merge bool = false
+    sides u16
+    rings u16
+    color u32
+    random_colors bool
+    merge bool
     transform Mat4
 }
 pub type Torus = C.sshape_torus_t
