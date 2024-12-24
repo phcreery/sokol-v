@@ -18,16 +18,20 @@ pub enum LogItem as u32 {
     cannot_destroy_default_context
 }
 pub struct Logger {
+pub mut:
     func  fn (&u8, u32, u32, &u8, u32, &u8, voidptr) voidptr = unsafe { nil }
     user_data  voidptr
 }
 pub struct Pipeline {
+pub mut:
     id u32 = 0
 }
 pub struct Context {
+pub mut:
     id u32 = 0
 }
 pub struct Error {
+pub mut:
     any bool = false
     vertices_full bool = false
     uniforms_full bool = false
@@ -37,6 +41,7 @@ pub struct Error {
     no_context bool = false
 }
 pub struct ContextDesc {
+pub mut:
     max_vertices int = 0
     max_commands int = 0
     color_format sg.PixelFormat = .default
@@ -44,11 +49,13 @@ pub struct ContextDesc {
     sample_count int = 0
 }
 pub struct Allocator {
+pub mut:
     alloc_fn  fn (usize, voidptr) voidptr = unsafe { nil }
     free_fn  fn (voidptr, voidptr) voidptr = unsafe { nil }
     user_data  voidptr
 }
 pub struct Desc {
+pub mut:
     max_vertices int = 0
     max_commands int = 0
     context_pool_size int = 0
@@ -61,8 +68,8 @@ pub struct Desc {
     logger Logger
 }
 fn C.sgl_setup(&Desc) voidptr
-pub fn setup(desc Desc) voidptr {
-    return C.sgl_setup(&desc)
+pub fn setup(desc &Desc) voidptr {
+    return C.sgl_setup(desc)
 }
 fn C.sgl_shutdown() voidptr
 pub fn shutdown() voidptr {
@@ -85,8 +92,8 @@ pub fn context_error(ctx Context) Error {
     return C.sgl_context_error(ctx)
 }
 fn C.sgl_make_context(&ContextDesc) Context
-pub fn make_context(desc ContextDesc) Context {
-    return C.sgl_make_context(&desc)
+pub fn make_context(desc &ContextDesc) Context {
+    return C.sgl_make_context(desc)
 }
 fn C.sgl_destroy_context(Context) voidptr
 pub fn destroy_context(ctx Context) voidptr {
@@ -129,12 +136,12 @@ pub fn context_draw_layer(ctx Context, layer_id int) voidptr {
     return C.sgl_context_draw_layer(ctx, layer_id)
 }
 fn C.sgl_make_pipeline(&sg.PipelineDesc) Pipeline
-pub fn make_pipeline(desc sg.PipelineDesc) Pipeline {
-    return C.sgl_make_pipeline(&desc)
+pub fn make_pipeline(desc &sg.PipelineDesc) Pipeline {
+    return C.sgl_make_pipeline(desc)
 }
 fn C.sgl_context_make_pipeline(Context, &sg.PipelineDesc) Pipeline
-pub fn context_make_pipeline(ctx Context, desc sg.PipelineDesc) Pipeline {
-    return C.sgl_context_make_pipeline(ctx, &desc)
+pub fn context_make_pipeline(ctx Context, desc &sg.PipelineDesc) Pipeline {
+    return C.sgl_context_make_pipeline(ctx, desc)
 }
 fn C.sgl_destroy_pipeline(Pipeline) voidptr
 pub fn destroy_pipeline(pip Pipeline) voidptr {

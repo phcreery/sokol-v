@@ -46,15 +46,18 @@ pub enum LogItem as u32 {
     backend_buffer_size_isnt_multiple_of_packet_size
 }
 pub struct Logger {
+pub mut:
     func  fn (&u8, u32, u32, &u8, u32, &u8, voidptr) voidptr = unsafe { nil }
     user_data  voidptr
 }
 pub struct Allocator {
+pub mut:
     alloc_fn  fn (usize, voidptr) voidptr = unsafe { nil }
     free_fn  fn (voidptr, voidptr) voidptr = unsafe { nil }
     user_data  voidptr
 }
 pub struct Desc {
+pub mut:
     sample_rate int = 0
     num_channels int = 0
     buffer_frames int = 0
@@ -67,8 +70,8 @@ pub struct Desc {
     logger Logger
 }
 fn C.saudio_setup(&Desc) voidptr
-pub fn setup(desc Desc) voidptr {
-    return C.saudio_setup(&desc)
+pub fn setup(desc &Desc) voidptr {
+    return C.saudio_setup(desc)
 }
 fn C.saudio_shutdown() voidptr
 pub fn shutdown() voidptr {

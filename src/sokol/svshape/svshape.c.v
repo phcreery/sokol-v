@@ -9,13 +9,16 @@ fn vstring_to_cstring(v_str string) &u8 {
     return v_str.str
 }
 pub struct Range {
+pub mut:
     ptr  voidptr
     size usize = 0
 }
 pub struct Mat4 {
+pub mut:
     m [4][4]f32 = [4][4]f32{init: [4]f32{init: 0.0}}
 }
 pub struct Vertex {
+pub mut:
     x f32 = 0.0
     y f32 = 0.0
     z f32 = 0.0
@@ -25,28 +28,34 @@ pub struct Vertex {
     color u32 = 0
 }
 pub struct ElementRange {
+pub mut:
     base_element u32 = 0
     num_elements u32 = 0
 }
 pub struct SizesItem {
+pub mut:
     num u32 = 0
     size u32 = 0
 }
 pub struct Sizes {
+pub mut:
     vertices SizesItem
     indices SizesItem
 }
 pub struct BufferItem {
+pub mut:
     buffer Range
     data_size usize = 0
     shape_offset usize = 0
 }
 pub struct Buffer {
+pub mut:
     valid bool = false
     vertices BufferItem
     indices BufferItem
 }
 pub struct Plane {
+pub mut:
     width f32 = 0.0
     depth f32 = 0.0
     tiles u16 = 0
@@ -56,6 +65,7 @@ pub struct Plane {
     transform Mat4
 }
 pub struct Box {
+pub mut:
     width f32 = 0.0
     height f32 = 0.0
     depth f32 = 0.0
@@ -66,6 +76,7 @@ pub struct Box {
     transform Mat4
 }
 pub struct Sphere {
+pub mut:
     radius f32 = 0.0
     slices u16 = 0
     stacks u16 = 0
@@ -75,6 +86,7 @@ pub struct Sphere {
     transform Mat4
 }
 pub struct Cylinder {
+pub mut:
     radius f32 = 0.0
     height f32 = 0.0
     slices u16 = 0
@@ -85,6 +97,7 @@ pub struct Cylinder {
     transform Mat4
 }
 pub struct Torus {
+pub mut:
     radius f32 = 0.0
     ring_radius f32 = 0.0
     sides u16 = 0
@@ -95,24 +108,24 @@ pub struct Torus {
     transform Mat4
 }
 fn C.sshape_build_plane(&Buffer, &Plane) Buffer
-pub fn build_plane(buf Buffer, params Plane) Buffer {
-    return C.sshape_build_plane(&buf, &params)
+pub fn build_plane(buf &Buffer, params &Plane) Buffer {
+    return C.sshape_build_plane(buf, params)
 }
 fn C.sshape_build_box(&Buffer, &Box) Buffer
-pub fn build_box(buf Buffer, params Box) Buffer {
-    return C.sshape_build_box(&buf, &params)
+pub fn build_box(buf &Buffer, params &Box) Buffer {
+    return C.sshape_build_box(buf, params)
 }
 fn C.sshape_build_sphere(&Buffer, &Sphere) Buffer
-pub fn build_sphere(buf Buffer, params Sphere) Buffer {
-    return C.sshape_build_sphere(&buf, &params)
+pub fn build_sphere(buf &Buffer, params &Sphere) Buffer {
+    return C.sshape_build_sphere(buf, params)
 }
 fn C.sshape_build_cylinder(&Buffer, &Cylinder) Buffer
-pub fn build_cylinder(buf Buffer, params Cylinder) Buffer {
-    return C.sshape_build_cylinder(&buf, &params)
+pub fn build_cylinder(buf &Buffer, params &Cylinder) Buffer {
+    return C.sshape_build_cylinder(buf, params)
 }
 fn C.sshape_build_torus(&Buffer, &Torus) Buffer
-pub fn build_torus(buf Buffer, params Torus) Buffer {
-    return C.sshape_build_torus(&buf, &params)
+pub fn build_torus(buf &Buffer, params &Torus) Buffer {
+    return C.sshape_build_torus(buf, params)
 }
 fn C.sshape_plane_sizes(u32) Sizes
 pub fn plane_sizes(tiles u32) Sizes {
@@ -135,16 +148,16 @@ pub fn torus_sizes(sides u32, rings u32) Sizes {
     return C.sshape_torus_sizes(sides, rings)
 }
 fn C.sshape_element_range(&Buffer) ElementRange
-pub fn element_range(buf Buffer) ElementRange {
-    return C.sshape_element_range(&buf)
+pub fn element_range(buf &Buffer) ElementRange {
+    return C.sshape_element_range(buf)
 }
 fn C.sshape_vertex_buffer_desc(&Buffer) sg.BufferDesc
-pub fn vertex_buffer_desc(buf Buffer) sg.BufferDesc {
-    return C.sshape_vertex_buffer_desc(&buf)
+pub fn vertex_buffer_desc(buf &Buffer) sg.BufferDesc {
+    return C.sshape_vertex_buffer_desc(buf)
 }
 fn C.sshape_index_buffer_desc(&Buffer) sg.BufferDesc
-pub fn index_buffer_desc(buf Buffer) sg.BufferDesc {
-    return C.sshape_index_buffer_desc(&buf)
+pub fn index_buffer_desc(buf &Buffer) sg.BufferDesc {
+    return C.sshape_index_buffer_desc(buf)
 }
 fn C.sshape_vertex_buffer_layout_state() sg.VertexBufferLayoutState
 pub fn vertex_buffer_layout_state() sg.VertexBufferLayoutState {
