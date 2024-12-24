@@ -1,4 +1,5 @@
 # sokol-v
-## v lang bindings for sokol headers
+
+v lang bindings for sokol headers
 
 wip
