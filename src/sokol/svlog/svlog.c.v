@@ -2,8 +2,9 @@
 
 module svlog
 
+
 // helper functions
-// helper function to convert a C string to a Zig string slice
+// helper function to convert a C string to a vlang string slice
 fn vstring_to_cstring(v_str string) &u8 {
     return v_str.str
 }
