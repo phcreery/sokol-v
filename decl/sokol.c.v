@@ -1,4 +1,4 @@
-module sokol
+module decl
 
 #flag -I @VMODROOT/src/sokol/c
 
