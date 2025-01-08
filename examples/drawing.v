@@ -4,7 +4,7 @@ import svg as gfx
 import svgl as sgl
 import svglue as sglue
 
-// import sokol_v.src.sokol as _
+// import sokol_v.decl as _
 // import sokol_v.svapp as sapp
 // import sokol_v.svg as gfx
 // import sokol_v.svgl as sgl
