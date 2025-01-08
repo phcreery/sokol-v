@@ -1,11 +1,16 @@
 /**********************************************************************
 * Sokol 3d cube demo
 **********************************************************************/
-import src.sokol as _
-import src.sokol.svapp as sapp
-import src.sokol.svg as gfx
-import src.sokol.svgl as sgl
-import src.sokol.svglue as sglue
+// import src.decl as _
+// import src.sokol.svapp as sapp
+// import src.sokol.svg as gfx
+// import src.sokol.svgl as sgl
+// import src.sokol.svglue as sglue
+import decl as _
+import svapp as sapp
+import svg as gfx
+import svgl as sgl
+import svglue as sglue
 import math
 
 const win_width = 800
